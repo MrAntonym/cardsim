@@ -1,4 +1,3 @@
-package com.company;
 
 /**
  * A rule is a set of actions and other rules which it does in a specified order based on
