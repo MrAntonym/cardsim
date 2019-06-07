@@ -1,27 +1,23 @@
 package com.company;
 import java.io.*;
+import com.google.gson.Gson;
 import java.util.*;
-//import org.json.simple.JSONArray;
-//import org.json.simple.JSONObject;
-//import org.json.simple.parser.JSONParser;
 
 public class Mode {
-   private File source;
+   public String modeName;
+   public HashMap<String, Rule> rules;
+   public LinkedList<String> zones;
 
-   public Mode(File f) {
-      source = f;
+   public Mode(String modeName, HashMap<String, Rule> rules, LinkedList<String> zones) {
+      this.modeName = modeName;
+      this.rules = rules;
+      this.zones = zones;
    }
 
-   public File getSource() {
-      return source;
-   }
+   public Mode() {}
 
-   public void loadData() {
-      //TODO
-   }
-
-   @Override public String toString() {
-      if (source == null) return "Mode loaded from: Null";
-      return "Mode loaded from: "+ source.toString();
+   @Override
+   public String toString() {
+      return modeName + "\n" + rules.keySet().toString() + "\n" + zones.toString();
    }
 }

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zone {
-    String descriptor;
+    //String descriptor;
     String ID;
     List<Card> cards = new ArrayList<>();
 
@@ -12,10 +12,10 @@ public class Zone {
      * @param descriptor The description of the Zone.
      * @param id The unique id of the Zone.
      */
-    public Zone(String id, String descriptor){
-        this(id);
-        this.descriptor = descriptor;
-    }
+    //public Zone(String id, String descriptor){
+    //    this(id);
+    //    this.descriptor = descriptor;
+    //}
 
     /**
      * Creates a Zone without a descriptor.
@@ -23,7 +23,7 @@ public class Zone {
      */
     public Zone(String id){
         this.ID = id;
-        descriptor = "";
+    //    descriptor = "";
     }
 
 
@@ -96,7 +96,8 @@ public class Zone {
         for(int i=0; i<cards.size(); i++){
             acc+=cards.get(i).title + ", ";
         }
-        return descriptor + "\n" + acc;
+        //return descriptor + "\n" + acc;
+        return acc;
     }
 
 

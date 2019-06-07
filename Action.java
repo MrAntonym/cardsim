@@ -4,16 +4,16 @@ import java.util.HashMap;
 /**
  * Defines the base actions that can be used in rules for all card games.
  */
-public final class Action {
+public class Action {
 
     /**
      * Create a new uniquely identified Zone with a public description of the Zone.
      * @param desc A description of the Zone publically available to players.
      * @return The newly created Zone.
      */
-    public static Zone createZone(String desc){
-        return new Zone(Network.generateNextID(), desc);
-    }
+    //public static Zone createZone(String desc){
+    //    return new Zone(Network.generateNextID(), desc);
+    //}
 
     /**
      * Create a new uniquely identified Zone.
