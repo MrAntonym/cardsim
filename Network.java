@@ -20,9 +20,9 @@ public class Network {
       System.out.println(m);
       Instance i = n.startInstance(m);
       System.out.println(i);
-      Zone z = Action.createZone();
-      System.out.println(z);
-      i.zones.put(z.ID, z);
+      Slot s = Action.createSlot();
+      System.out.println(s);
+      i.slots.put(s.ID, s);
    }
 
    public Network() {

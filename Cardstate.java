@@ -1,16 +1,16 @@
 /**
  * Stores the physical position of a particular card.
  */
-public class State {
+public class Cardstate {
    private boolean face; //face true is faceup, face false is facedown.
    private Orientation orient;
 
    /**
-    * Public constructor for State.
+    * Public constructor for Cardstate.
     * @param face Boolean which is true if the face is faceup, false otherwise.
     * @param orient Orientation of FORWARD, RIGHT, LEFT, DOWN.
     */
-   public State(boolean face, Orientation orient) {
+   public Cardstate(boolean face, Orientation orient) {
       this.orient = orient;
       this.face = face;
    }
@@ -32,8 +32,8 @@ public class State {
    @Override
    public boolean equals(Object o) {
       if (o == this) return true;
-      if (!(o instanceof State)) return false;
-      State s = (State) o;
+      if (!(o instanceof Cardstate)) return false;
+      Cardstate s = (Cardstate) o;
       return s.isFaceup() == this.face && s.getOrientation() == this.orient;
    }
 

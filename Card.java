@@ -6,7 +6,7 @@ public class Card implements Cloneable {
    LinkedList<Rule> rules;
    int artID; //this may be subject to change in order to better reflect how we connect each card to its art.
    LinkedList<Trait> traits;
-   State s;
+   Cardstate s;
    String ID;
 
    /**

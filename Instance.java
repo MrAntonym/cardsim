@@ -6,12 +6,12 @@ import java.util.HashMap;
 public class Instance {
    public Mode mode;
    public String ID;
-   public HashMap<String, Zone> zones;
+   public HashMap<String, Slot> slots;
 
    public Instance(Mode mode, String ID) {
       this.mode = mode;
       this.ID = ID;
-      zones = new HashMap<String, Zone>();
+      slots = new HashMap<String, Slot>();
    }
 
    @Override public String toString() {
