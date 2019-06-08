@@ -1,0 +1,80 @@
+{
+	"modeName": "Go Fish",
+	"rules": {
+		"draw": {
+			"title": "draw",
+			"condition": [],
+			"operation": ["moveCard", "deck", "0", "turnHand", "0"]
+		},
+		"turnHand": {
+			"title": "turnHand",
+			"condition": [],
+			"operation": ["goto", "product", "5", "getPlayerNumber", "getTurn", "return", "p1hand", "pass", "pass", "pass", "return", "p2hand"]
+		}
+	},
+	"slots": ["deck", "p1hand", "p2hand", "p1pairs", "p2pairs"],
+    "cards": {
+        "aceSpade": {
+            "title": "aceSpade",
+            "rules": ["checkPair"],
+            "artID": "AS.png",
+            "traits": ["ace", "spade"]
+        },
+        "aceDiamond": {
+            "title": "aceDiamond",
+            "rules": ["checkPair"],
+            "artID": "AD.png",
+            "traits": ["ace", "diamond"]
+        },
+        "aceClub": {
+            "title": "aceClub",
+            "rules": ["checkPair"],
+            "artID": "AC.png",
+            "traits": ["ace", "club"]
+        },
+        "aceHeart": {
+            "title": "aceHeart",
+            "rules": ["checkPair"],
+            "artID": "AH.png",
+            "traits": ["ace", "heart"]
+        },
+        "twoSpade": {
+            "title": "twoSpade",
+            "rules": ["checkPair"],
+            "artID": "2S.png",
+            "traits": ["two", "spade"]
+        }
+    },
+    "traits": {
+        "suit": {
+            "type": "suit"
+        },
+        "spade": {
+            "type": "spade",
+            "superTrait": "suit"
+        },
+        "diamond": {
+            "type": "diamond",
+            "superTrait": "suit"
+        },
+        "club": {
+            "type": "club",
+            "superTrait": "suit"
+        },
+        "heart": {
+            "type": "heart",
+            "superTrait": "suit"
+        },
+        "number": {
+            "type": "number"
+        },
+        "ace": {
+            "type": "ace",
+            "superTrait": "number"
+        },
+        "two": {
+            "type": "two",
+            "superTrait": "number"
+        }
+    }
+}
