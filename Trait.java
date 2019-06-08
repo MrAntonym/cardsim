@@ -1,4 +1,3 @@
-package com.company;
 /**
  * Stores a trait such as the suit of a card or the number on its face, but not an effect.
  * Some traits may be subtraits of other traits and therefore have a superTrait.

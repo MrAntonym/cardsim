@@ -1,10 +1,11 @@
-package com.company;
 import java.util.HashMap;
 
 /**
  * Defines the base actions that can be used in rules for all card games.
  */
 public class Action {
+
+    //would it be better to make this an abstract class? Or just to simply expand out on the list of actions?
 
     /**
      * Create a new uniquely identified Slot.

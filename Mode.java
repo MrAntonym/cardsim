@@ -1,4 +1,3 @@
-package com.company;
 import java.io.*;
 import com.google.gson.Gson;
 import java.util.*;

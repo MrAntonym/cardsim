@@ -1,4 +1,3 @@
-package com.company;
 import java.util.LinkedList;
 
 public class Card implements Cloneable {
@@ -8,6 +7,7 @@ public class Card implements Cloneable {
    public LinkedList<String> traits;
    public Cardstate s;
    public String ID;
+
 
    /**
     * Generates a card from the mode's information. (Currently STUB)
