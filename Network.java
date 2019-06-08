@@ -3,12 +3,9 @@ import java.io.*;
 import java.nio.file.InvalidPathException;
 import java.util.HashMap;
 import com.google.gson.Gson;
-import com.google.common.reflect.TypeToken;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
-import java.lang.reflect.Type;
-import java.util.Map;
 
 /**
  * The top level class which handles communication between the local gamestate and
@@ -16,30 +13,20 @@ import java.util.Map;
  */
 public class Network {
    private HashMap<String, Mode> loadedModes;
-   private HashMap<String, Instance> runningInstances;
+   private HashMap<String, Gamestate> runningGamestates;
    private static String lastGeneratedID;
 
    public static void main(String[] args) {
       System.out.println("Starting Network...");
       Network n = new Network();
-      //Chooses a testing mode and makes an instance of that mode.
-      /**
-      System.out.println("Loading null Mode...");
-      Mode m = n.loadMode("NullMode", null);
-      System.out.println(m);
-      Instance i = n.startInstance(m);
-      System.out.println(i);
-      Zone z = Action.createZone();
-      System.out.println(z);
-      i.zones.put(z.ID, z);
-       */
+      //Chooses a testing mode and makes an gamestate of that mode.
       Mode m = n.loadMode(pickMode());
       System.out.println(m);
    }
 
    public Network() {
       loadedModes = new HashMap<String, Mode>();
-      runningInstances = new HashMap<String, Instance>();
+      runningGamestates = new HashMap<String, Gamestate>();
       lastGeneratedID = "";
    }
 
@@ -69,7 +56,7 @@ public class Network {
    }
 
    /**
-    * Generates a generic String ID which can be used for instances, zones, cards, etc.
+    * Generates a generic String ID which can be used for gamestates, slots, cards, etc.
     * such that there are never any duplicated IDs.
     * @return Unique String ID.
     */
@@ -87,9 +74,9 @@ public class Network {
       }
    }
 
-   public Instance startInstance(Mode m) {
-      Instance i = new Instance(m, generateNextID());
-      runningInstances.put(lastGeneratedID, i);
+   public Gamestate startGamestate(Mode m) {
+      Gamestate i = new Gamestate(m, generateNextID());
+      runningGamestates.put(lastGeneratedID, i);
       return i;
    }
 }

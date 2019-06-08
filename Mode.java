@@ -6,18 +6,14 @@ import java.util.*;
 public class Mode {
    public String modeName;
    public HashMap<String, Rule> rules;
-   public LinkedList<String> zones;
-
-   public Mode(String modeName, HashMap<String, Rule> rules, LinkedList<String> zones) {
-      this.modeName = modeName;
-      this.rules = rules;
-      this.zones = zones;
-   }
+   public LinkedList<String> slots;
+   public HashMap<String, Card> cards;
+   public HashMap<String, Trait> traits;
 
    public Mode() {}
 
    @Override
    public String toString() {
-      return modeName + "\n" + rules.keySet().toString() + "\n" + zones.toString();
+      return modeName + "\n" + rules.keySet().toString() + "\n" + slots.toString() + "\n" + cards.keySet().toString() + "\n" + traits.keySet().toString();
    }
 }

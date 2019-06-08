@@ -7,30 +7,21 @@ import java.util.HashMap;
 public class Action {
 
     /**
-     * Create a new uniquely identified Zone with a public description of the Zone.
-     * @param desc A description of the Zone publically available to players.
-     * @return The newly created Zone.
+     * Create a new uniquely identified Slot.
+     * @return The newly created Slot.
      */
-    //public static Zone createZone(String desc){
-    //    return new Zone(Network.generateNextID(), desc);
-    //}
-
-    /**
-     * Create a new uniquely identified Zone.
-     * @return The newly created Zone.
-     */
-    public static Zone createZone(){
-        return new Zone(Network.generateNextID());
+    public static Slot createSlot(){
+        return new Slot(Network.generateNextID());
     }
 
     /**
-     * Removes the Zone with a given id.
-     * @param zones The collection containing the Zone to be removed.
-     * @param id The id to identify which Zone is to be removed.
-     * @return Returns true if a Zone was removed and false if there was no matching Zone.
+     * Removes the Slot with a given id.
+     * @param slots The collection containing the Slot to be removed.
+     * @param id The id to identify which Slot is to be removed.
+     * @return Returns true if a Slot was removed and false if there was no matching Slot.
      */
-    public static boolean removeZone(HashMap<String, Zone> zones, String id) {
-        Zone z = zones.remove(id);
+    public static boolean removeSlot(HashMap<String, Slot> slots, String id) {
+        Slot z = slots.remove(id);
         if (z == null) return false;
         return true;
     }
@@ -42,26 +33,34 @@ public class Action {
      * @return The newly created Card.
      */
     public static Card createCard(String title, Mode m){
-        return Card.generateCard(title, m, Network.generateNextID());
+        try {
+            Card c = (Card) m.cards.get(title).clone();
+            c.ID = Network.generateNextID();
+            c.s = new Cardstate(true, Orientation.UP);
+            return c;
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Card not defined");
+            return null;
+        }
     }
 
     /**
-     * Removes the Card in the given index from the given Zone.
-     * @param z The Zone containing the Card to be removed.
+     * Removes the Card in the given index from the given Slot.
+     * @param z The Slot containing the Card to be removed.
      * @param index The index from which the Card is to be removed.
      */
-    public static void removeCard(Zone z, int index){
+    public static void removeCard(Slot z, int index){
         z.remove(index);
     }
 
     /**
-     * Moves the Card from one index of one Zone to another.
-     * @param zStart The Zone initially containing the Card to be moved.
+     * Moves the Card from one index of one Slot to another.
+     * @param zStart The Slot initially containing the Card to be moved.
      * @param indexStart The index of the Card initially.
-     * @param zEnd The Zone to where the Card is to be moved.
+     * @param zEnd The Slot to where the Card is to be moved.
      * @param indexEnd The index to where the Card is to be moved.
      */
-    public static void moveCard(Zone zStart, int indexStart, Zone zEnd, int indexEnd){
+    public static void moveCard(Slot zStart, int indexStart, Slot zEnd, int indexEnd){
         zEnd.insert(zStart.remove(indexStart), indexEnd);
     }
 

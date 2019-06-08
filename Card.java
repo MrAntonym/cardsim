@@ -1,18 +1,18 @@
 package com.company;
 import java.util.LinkedList;
-import java.util.HashMap;
 
 public class Card implements Cloneable {
-   String title;
-   LinkedList<Rule> rules;
-   int artID; //this may be subject to change in order to better reflect how we connect each card to its art.
-   LinkedList<Trait> traits;
-   State s;
-   String ID;
+   public String title;
+   public LinkedList<String> rules;
+   public String artID; //this may be subject to change in order to better reflect how we connect each card to its art.
+   public LinkedList<String> traits;
+   public Cardstate s;
+   public String ID;
 
    /**
     * Generates a card from the mode's information. (Currently STUB)
     */
+   /**
    public static Card generateCard(String title, Mode m, String ID) {
       //Looks at the JSON file (eventually...)
       return new Card(title, new LinkedList<Rule>(), 0, new LinkedList<Trait>(), ID);
@@ -25,6 +25,7 @@ public class Card implements Cloneable {
       this.traits = traits;
       this.ID = ID;
    }
+    */
 
    @Override
    public Object clone() throws CloneNotSupportedException {
