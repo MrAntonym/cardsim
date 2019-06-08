@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Rule {
    public String title; //The unique title of this rule
    public ArrayList<String> condition; //The condition when this rule can be acted on directly by the priority player. If this is empty, then this rule CAN NOT be acted on directly.
-   public ArrayList<String> operation; //The sequence of operations performed when this rule is triggered
+   public ArrayList<String> operation; //The sequence of operations performed when this rule is triggered. Should only use actions or other rules.
 
    @Override
    public String toString() {

@@ -2,6 +2,7 @@ import java.util.HashMap;
 
 /**
  * Defines the base actions that can be used in rules for all card games.
+ * Formally speaking, an action takes a gamestate as an input and returns a gamestate as an output
  */
 public class Action {
 
@@ -63,6 +64,14 @@ public class Action {
      */
     public static void moveCard(Slot zStart, int indexStart, Slot zEnd, int indexEnd){
         zEnd.insert(zStart.remove(indexStart), indexEnd);
+    }
+
+    /**
+     * Ends the turn of the current player and begins the next.
+     * @param g The current gamestate
+     */
+    public static void endTurn(Gamestate g){
+        g.playerPriority++;
     }
 
 

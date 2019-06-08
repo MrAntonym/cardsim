@@ -8,8 +8,16 @@ public class Mode {
    public LinkedList<String> slots;
    public HashMap<String, Card> cards;
    public HashMap<String, Trait> traits;
+   int numPlayers; // 0 indicates a variable number of players
 
-   public Mode() {}
+   public Mode(String modeName, HashMap<String, Rule> rules, LinkedList<String> slots, HashMap<String, Card> cards, HashMap<String, Trait> traits, int numPlayers) {
+      this.modeName = modeName;
+      this.rules = rules;
+      this.slots = slots;
+      this.cards = cards;
+      this.traits = traits;
+      this.numPlayers = numPlayers;
+   }
 
    @Override
    public String toString() {

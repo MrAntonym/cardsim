@@ -1,5 +1,6 @@
 {
 	"modeName": "Go Fish",
+    "numPlayers": "2",
 	"rules": {
 		"draw": {
 			"title": "draw",

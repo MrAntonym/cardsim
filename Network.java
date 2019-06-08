@@ -1,6 +1,9 @@
 import java.io.*;
 import java.nio.file.InvalidPathException;
 import java.util.HashMap;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
 import com.google.gson.Gson;
 
 import javax.swing.*;
@@ -42,7 +45,7 @@ public class Network {
    /**
     * Loads the mode specified.
     */
-   public Mode loadMode(File f) throws InvalidPathException {
+   public Mode loadMode(File f) throws InvalidPathException, IOException, ParseException {
       Reader reader;
       try {
          reader = new FileReader(f);
@@ -50,6 +53,9 @@ public class Network {
          System.out.println("File not found when loading mode...");
          return null;
       }
+      JSONObject jo = (JSONObject)new JSONParser().parse(reader);
+      String modeName = (String)jo.get("modeName");
+      int numPlayers = Integer.parseInt((String)jo.get("numPlayers");
       Mode m = new Gson().fromJson(reader, Mode.class);
       return m;
    }

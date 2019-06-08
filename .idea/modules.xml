@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Parser/Interpreter/Parser/Interpreter.iml" filepath="$PROJECT_DIR$/Parser/Interpreter/Parser/Interpreter.iml" />
       <module fileurl="file://$PROJECT_DIR$/cardsim.iml" filepath="$PROJECT_DIR$/cardsim.iml" />
     </modules>
   </component>
