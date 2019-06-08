@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Slot {
-    String descriptor;
+    //String descriptor;
     String ID;
     List<Card> cards = new ArrayList<>();
 
@@ -11,10 +11,10 @@ public class Slot {
      * @param descriptor The description of the Slot.
      * @param id The unique id of the Slot.
      */
-    public Slot(String id, String descriptor){
-        this(id);
-        this.descriptor = descriptor;
-    }
+    //public Slot(String id, String descriptor){
+    //    this(id);
+    //    this.descriptor = descriptor;
+    //}
 
     /**
      * Creates a Slot without a descriptor.
@@ -22,7 +22,7 @@ public class Slot {
      */
     public Slot(String id){
         this.ID = id;
-        descriptor = "";
+    //    descriptor = "";
     }
 
 
@@ -95,7 +95,8 @@ public class Slot {
         for(int i=0; i<cards.size(); i++){
             acc+=cards.get(i).title + ", ";
         }
-        return descriptor + "\n" + acc;
+        //return descriptor + "\n" + acc;
+        return acc;
     }
 
 

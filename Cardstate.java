@@ -8,7 +8,7 @@ public class Cardstate {
    /**
     * Public constructor for Cardstate.
     * @param face Boolean which is true if the face is faceup, false otherwise.
-    * @param orient Orientation of FORWARD, RIGHT, LEFT, DOWN.
+    * @param orient Orientation of UP, RIGHT, LEFT, DOWN.
     */
    public Cardstate(boolean face, Orientation orient) {
       this.orient = orient;

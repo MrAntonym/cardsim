@@ -1,58 +1,61 @@
 import java.io.*;
 import java.nio.file.InvalidPathException;
-import java.util.HashSet;
+import java.util.HashMap;
+import com.google.gson.Gson;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 
 /**
  * The top level class which handles communication between the local gamestate and
  * other connections (central server, other players, etc.)
  */
 public class Network {
-   private HashSet<Mode> loadedModes;
-   private HashSet<Instance> runningInstances;
+   private HashMap<String, Mode> loadedModes;
+   private HashMap<String, Gamestate> runningGamestates;
    private static String lastGeneratedID;
 
    public static void main(String[] args) {
       System.out.println("Starting Network...");
       Network n = new Network();
-      //Chooses a testing mode and makes an instance of that mode.
-      System.out.println("Loading null Mode...");
-      Mode m = n.loadMode(null);
+      //Chooses a testing mode and makes an gamestate of that mode.
+      Mode m = n.loadMode(pickMode());
       System.out.println(m);
-      Instance i = n.startInstance(m);
-      System.out.println(i);
-      Slot s = Action.createSlot();
-      System.out.println(s);
-      i.slots.put(s.ID, s);
    }
 
    public Network() {
-      loadedModes = new HashSet<Mode>();
-      runningInstances = new HashSet<Instance>();
+      loadedModes = new HashMap<String, Mode>();
+      runningGamestates = new HashMap<String, Gamestate>();
       lastGeneratedID = "";
+   }
+
+   public static File pickMode() {
+      File f = null;
+      final JFileChooser fc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+      int rv = fc.showOpenDialog(null);
+      if (rv == JFileChooser.APPROVE_OPTION) {
+         f = fc.getSelectedFile();
+      }
+      return f;
    }
 
    /**
     * Loads the mode specified.
     */
-   public Mode loadMode(String modeFilePath) throws InvalidPathException {
-      Mode m;
+   public Mode loadMode(File f) throws InvalidPathException {
+      Reader reader;
       try {
-         File f = new File(modeFilePath);
-         if (f.exists()) {
-            m = new Mode(f);
-            m.loadData();
-         } else throw new InvalidPathException(modeFilePath, "No such mode found.");
-      } catch (NullPointerException e) {
-         //Loads a blank mode for abstract testing.
-         m = new Mode(null);
+         reader = new FileReader(f);
+      } catch (FileNotFoundException e) {
+         System.out.println("File not found when loading mode...");
+         return null;
       }
-
-      loadedModes.add(m);
+      Mode m = new Gson().fromJson(reader, Mode.class);
       return m;
    }
 
    /**
-    * Generates a generic String ID which can be used for instances, zones, cards, etc.
+    * Generates a generic String ID which can be used for gamestates, slots, cards, etc.
     * such that there are never any duplicated IDs.
     * @return Unique String ID.
     */
@@ -70,9 +73,9 @@ public class Network {
       }
    }
 
-   public Instance startInstance(Mode m) {
-      Instance i = new Instance(m, generateNextID());
-      runningInstances.add(i);
+   public Gamestate startGamestate(Mode m) {
+      Gamestate i = new Gamestate(m, generateNextID());
+      runningGamestates.put(lastGeneratedID, i);
       return i;
    }
 }

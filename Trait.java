@@ -7,7 +7,7 @@
  */
 public class Trait {
    public String type;
-   public Trait superTrait;
+   public String superTrait;
 
    /**
     * Constructor for a root Trait.
@@ -22,14 +22,22 @@ public class Trait {
     * @param type The name of this Trait.
     * @param superTrait The superTrait that this Trait is to have.
     */
-   public Trait(String type, Trait superTrait) {
+   public Trait(String type, String superTrait) {
       this(type);
       this.superTrait = superTrait;
    }
 
    @Override
    public boolean equals(Object o) {
-      return this == o || this.type.equals(o);
+      if (o == this) return true;
+      if (o instanceof Trait) {
+         Trait trait = (Trait) o;
+         return this.type.equals(trait.type);
+      } else if (o instanceof String) {
+         return this.type.equals(o);
+      } else {
+         return false;
+      }
    }
 
    @Override

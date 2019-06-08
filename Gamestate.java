@@ -1,19 +1,24 @@
-import java.util.LinkedList;
+import java.util.HashMap;
 
 /**
- * A Gamestate represents the state of an instance of a game.
+ * The gamestate of a particular game
  */
 public class Gamestate {
-    LinkedList<Slot> slots;
-    LinkedList<Card> cards;
-    int playerTurn = 0; //TODO come back when we've figured out how turn rotations work
+   public Mode mode;
+   public String ID;
+   public HashMap<String, Slot> slots;
+   public HashMap<String, Card> cards;
+   public int playerPriority;
 
+   public Gamestate(Mode mode, String ID) {
+      this.mode = mode;
+      this.ID = ID;
+      slots = new HashMap<String, Slot>();
+      cards = new HashMap<String, Card>();
+      playerPriority = 0;
+   }
 
-    public Gamestate(LinkedList<Slot> slots, LinkedList<Card> cards) {
-        this.slots = slots;
-        this.cards = cards;
-    }
-
-
-
+   @Override public String toString() {
+      return "Gamestate with ID: " + ID + " | Using mode: " + mode.toString();
+   }
 }

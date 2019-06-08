@@ -1,26 +1,18 @@
 import java.io.*;
+import com.google.gson.Gson;
 import java.util.*;
-//import org.json.simple.JSONArray;
-//import org.json.simple.JSONObject;
-//import org.json.simple.parser.JSONParser;
 
 public class Mode {
-   private File source;
+   public String modeName;
+   public HashMap<String, Rule> rules;
+   public LinkedList<String> slots;
+   public HashMap<String, Card> cards;
+   public HashMap<String, Trait> traits;
 
-   public Mode(File f) {
-      source = f;
-   }
+   public Mode() {}
 
-   public File getSource() {
-      return source;
-   }
-
-   public void loadData() {
-      //TODO
-   }
-
-   @Override public String toString() {
-      if (source == null) return "Mode loaded from: Null";
-      return "Mode loaded from: "+ source.toString();
+   @Override
+   public String toString() {
+      return modeName + "\n" + rules.keySet().toString() + "\n" + slots.toString() + "\n" + cards.keySet().toString() + "\n" + traits.keySet().toString();
    }
 }

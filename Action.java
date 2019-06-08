@@ -3,18 +3,9 @@ import java.util.HashMap;
 /**
  * Defines the base actions that can be used in rules for all card games.
  */
-public final class Action {
+public class Action {
 
     //would it be better to make this an abstract class? Or just to simply expand out on the list of actions?
-
-    /**
-     * Create a new uniquely identified Slot with a public description of the Slot.
-     * @param desc A description of the Slot publically available to players.
-     * @return The newly created Slot.
-     */
-    public static Slot createSlot(String desc){
-        return new Slot(Network.generateNextID(), desc);
-    }
 
     /**
      * Create a new uniquely identified Slot.
@@ -26,12 +17,12 @@ public final class Action {
 
     /**
      * Removes the Slot with a given id.
-     * @param Slots The collection containing the Slot to be removed.
+     * @param slots The collection containing the Slot to be removed.
      * @param id The id to identify which Slot is to be removed.
      * @return Returns true if a Slot was removed and false if there was no matching Slot.
      */
-    public static boolean removeSlot(HashMap<String, Slot> Slots, String id) {
-        Slot z = Slots.remove(id);
+    public static boolean removeSlot(HashMap<String, Slot> slots, String id) {
+        Slot z = slots.remove(id);
         if (z == null) return false;
         return true;
     }
@@ -43,7 +34,15 @@ public final class Action {
      * @return The newly created Card.
      */
     public static Card createCard(String title, Mode m){
-        return Card.generateCard(title, m, Network.generateNextID());
+        try {
+            Card c = (Card) m.cards.get(title).clone();
+            c.ID = Network.generateNextID();
+            c.s = new Cardstate(true, Orientation.UP);
+            return c;
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Card not defined");
+            return null;
+        }
     }
 
     /**
