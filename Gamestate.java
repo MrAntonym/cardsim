@@ -7,12 +7,12 @@ public class Gamestate {
    public Mode mode;
    public String ID;
    public HashMap<String, Slot> slots;
+   public HashMap<String, Card> cards;
    public int playerPriority;
 
    public Gamestate(Mode mode, String ID) {
       this.mode = mode;
       this.ID = ID;
-      slots = new HashMap<String, Slot>();
       playerPriority = 0;
    }
 

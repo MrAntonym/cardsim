@@ -1,13 +1,16 @@
 import java.io.*;
 import java.nio.file.InvalidPathException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
-import com.google.gson.Gson;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
+import language.src.Parser;
+import language.src.Interpreter;
 
 /**
  * The top level class which handles communication between the local gamestate and
@@ -18,7 +21,7 @@ public class Network {
    private HashMap<String, Gamestate> runningGamestates;
    private static String lastGeneratedID;
 
-   public static void main(String[] args) {
+   public static void main(String[] args) throws IOException, ParseException {
       System.out.println("Starting Network...");
       Network n = new Network();
       //Chooses a testing mode and makes an gamestate of that mode.
@@ -53,11 +56,20 @@ public class Network {
          System.out.println("File not found when loading mode...");
          return null;
       }
+//    Reading in the Json file
+      Interpreter i = new Interpreter();
+      Parser p = new Parser();
       JSONObject jo = (JSONObject)new JSONParser().parse(reader);
       String modeName = (String)jo.get("modeName");
-      int numPlayers = Integer.parseInt((String)jo.get("numPlayers");
-      Mode m = new Gson().fromJson(reader, Mode.class);
-      return m;
+      int numPlayers = Integer.parseInt((String)jo.get("numPlayers"));
+      HashMap<String,Trait> traits = i.interpretTraits((HashMap)jo.get("traits"));
+      HashMap<String,Slot> slots = i.interpretSlots((HashMap)jo.get("slots"));
+      ArrayList<Card> cards = i.interpretCards((HashMap)jo.get("cards"));
+
+
+
+
+      return new Mode()
    }
 
    /**

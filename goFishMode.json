@@ -1,25 +1,35 @@
 {
 	"modeName": "Go Fish",
     "numPlayers": "2",
-	"rules": {
-		"draw": {
-			"title": "draw",
-			"condition": [],
-			"operation": ["moveCard", "deck", "0", "turnHand", "0"]
-		},
-		"turnHand": {
-			"title": "turnHand",
-			"condition": [],
-			"operation": ["goto", "product", "5", "getPlayerNumber", "getTurn", "return", "p1hand", "pass", "pass", "pass", "return", "p2hand"]
-		}
-	},
-	"slots": ["deck", "p1hand", "p2hand", "p1pairs", "p2pairs"],
+    "traits": {
+        "suit": {
+            "type": "enum",
+            "var": ["spade", "diamond", "club","heart"]
+        },
+        "number": {
+            "type": "int",
+            "var": [1,2,3,4,5,6,7,8,9,10,11,12,13]
+        }
+    },
+    "slots": ["deck", "p1hand", "p2hand", "center"],
+    "rules": {
+        "draw(slot)": {
+            "title": "draw",
+            "condition": [],
+            "operation": ["moveCard", "deck", "0", "slot", "0"]
+        },
+        "turnHand": {
+            "title": "turnHand",
+            "condition": [],
+            "operation": ["goto", "product", "5", "getPlayerNumber", "getTurn", "return", "p1hand", "pass", "pass", "pass", "return", "p2hand"]
+        }
+    },
     "cards": {
         "aceSpade": {
             "title": "aceSpade",
             "rules": ["checkPair"],
             "artID": "AS.png",
-            "traits": ["ace", "spade"]
+            "traits": ["suit spade", "number 1"]
         },
         "aceDiamond": {
             "title": "aceDiamond",
@@ -45,37 +55,6 @@
             "artID": "2S.png",
             "traits": ["two", "spade"]
         }
-    },
-    "traits": {
-        "suit": {
-            "type": "suit"
-        },
-        "spade": {
-            "type": "spade",
-            "superTrait": "suit"
-        },
-        "diamond": {
-            "type": "diamond",
-            "superTrait": "suit"
-        },
-        "club": {
-            "type": "club",
-            "superTrait": "suit"
-        },
-        "heart": {
-            "type": "heart",
-            "superTrait": "suit"
-        },
-        "number": {
-            "type": "number"
-        },
-        "ace": {
-            "type": "ace",
-            "superTrait": "number"
-        },
-        "two": {
-            "type": "two",
-            "superTrait": "number"
-        }
     }
+
 }
