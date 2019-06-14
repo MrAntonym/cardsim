@@ -1,9 +1,10 @@
+package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Slot {
     //String descriptor;
-    String ID;
+    ID id;
     List<Card> cards = new ArrayList<>();
 
     /**
@@ -20,8 +21,8 @@ public class Slot {
      * Creates a Slot without a descriptor.
      * @param id The unique id of the Slot.
      */
-    public Slot(String id){
-        this.ID = id;
+    public Slot(ID id){
+        this.id = id;
     //    descriptor = "";
     }
 
@@ -91,7 +92,7 @@ public class Slot {
 
     @Override
     public String toString(){
-        String acc = "Slot with ID: " + ID + "\n";
+        String acc = "Slot with ID: " + id + "\n";
         for(int i=0; i<cards.size(); i++){
             acc+=cards.get(i).title + ", ";
         }

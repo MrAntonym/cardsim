@@ -1,25 +1,27 @@
-import java.io.*;
+package com.company;
 import java.util.*;
 
 public class Mode {
    public String modeName;
-   public HashMap<String, Rule> rules;
-   public LinkedList<String> slots;
-   public HashMap<String, Card> cards;
-   public HashMap<String, Trait> traits;
-   int numPlayers; // 0 indicates a variable number of players
+   public HashMap<String, Rule> rules; //<Rule's name, Rule>
+   public HashMap<String, LinkedList<String>> slots; //<playerType, [SlotName, SlotName,...]>
+   public HashMap<String, Card> cards; //<Card's name, Card>
+   public HashMap<String, TraitType> traits; //<TraitType's name, TraitType>
+   public HashMap<String, Integer> playerTypes; //<playerType, number of that playerType in a game>
 
-   public Mode(String modeName, HashMap<String, Rule> rules, LinkedList<String> slots, HashMap<String, Card> cards, HashMap<String, Trait> traits, int numPlayers) {
+   public Mode() {}
+
+   public Mode(String modeName, HashMap<String, Rule> rules, HashMap<String, LinkedList<String>> slots, HashMap<String, Card> cards, HashMap<String, TraitType> traits, HashMap<String, Integer> playerTypes) {
       this.modeName = modeName;
       this.rules = rules;
       this.slots = slots;
       this.cards = cards;
       this.traits = traits;
-      this.numPlayers = numPlayers;
+      this.playerTypes = playerTypes;
    }
 
    @Override
    public String toString() {
-      return modeName + "\n" + rules.keySet().toString() + "\n" + slots.toString() + "\n" + cards.keySet().toString() + "\n" + traits.keySet().toString();
+      return modeName + "\n" + playerTypes.entrySet().toString() + "\n" + rules.keySet().toString() + "\n" + slots.entrySet().toString() + "\n" + cards.keySet().toString() + "\n" + traits.keySet().toString();
    }
 }

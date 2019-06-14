@@ -1,25 +1,38 @@
 {
 	"modeName": "Go Fish",
-    "numPlayers": "2",
+    "playerTypes": {
+        "player" : 2
+    },
     "traits": {
         "suit": {
-            "type": "enum",
+            "type": "java.lang.String",
             "var": ["spade", "diamond", "club","heart"]
         },
         "number": {
-            "type": "int",
+            "type": "java.lang.Integer",
             "var": [1,2,3,4,5,6,7,8,9,10,11,12,13]
         }
     },
-    "slots": ["deck", "p1hand", "p2hand", "center"],
+    "slots": {
+        "universal": ["deck", "center"],
+        "player": ["hand", "pairs"]
+    },
     "rules": {
-        "draw(slot)": {
+        "startup": {
+            "title": "startup",
+            "inputs": 0,
+            "condition": [],
+            "operation": ["hand", "pop", "pairs", "pop"]
+        },
+        "draw": {
             "title": "draw",
+            "inputs": 1,
             "condition": [],
             "operation": ["moveCard", "deck", "0", "slot", "0"]
         },
         "turnHand": {
             "title": "turnHand",
+            "inputs": 0,
             "condition": [],
             "operation": ["goto", "product", "5", "getPlayerNumber", "getTurn", "return", "p1hand", "pass", "pass", "pass", "return", "p2hand"]
         }

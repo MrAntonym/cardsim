@@ -1,3 +1,4 @@
+package com.company;
 import java.util.LinkedList;
 
 public class Card implements Cloneable {
@@ -6,8 +7,7 @@ public class Card implements Cloneable {
    public String artID; //this may be subject to change in order to better reflect how we connect each card to its art.
    public LinkedList<String> traits;
    public Cardstate s;
-   public String ID;
-
+   public ID id;
 
    /**
     * Generates a card from the mode's information. (Currently STUB)
@@ -15,10 +15,10 @@ public class Card implements Cloneable {
    /**
    public static Card generateCard(String title, Mode m, String ID) {
       //Looks at the JSON file (eventually...)
-      return new Card(title, new LinkedList<Rule>(), 0, new LinkedList<Trait>(), ID);
+      return new Card(title, new LinkedList<Rule>(), 0, new LinkedList<TraitType>(), ID);
    }
 
-   private Card(String title, LinkedList<Rule> rules, int artID, LinkedList<Trait> traits, String ID) {
+   private Card(String title, LinkedList<Rule> rules, int artID, LinkedList<TraitType> traits, String ID) {
       this.title = title;
       this.rules = rules;
       this.artID = artID;

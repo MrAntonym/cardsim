@@ -1,38 +1,53 @@
+package com.company;
+
 import java.io.*;
 import java.nio.file.InvalidPathException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
+import com.google.gson.Gson;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
-import language.src.Parser;
-import language.src.Interpreter;
+import java.util.Map;
 
 /**
  * The top level class which handles communication between the local gamestate and
  * other connections (central server, other players, etc.)
  */
 public class Network {
-   private HashMap<String, Mode> loadedModes;
-   private HashMap<String, Gamestate> runningGamestates;
-   private static String lastGeneratedID;
+   private HashMap<ID, Mode> loadedModes;
+   private HashMap<ID, Gamestate> runningGamestates;
+   private static ID lastGeneratedID;
 
-   public static void main(String[] args) throws IOException, ParseException {
+   public static void main(String[] args) {
       System.out.println("Starting Network...");
       Network n = new Network();
       //Chooses a testing mode and makes an gamestate of that mode.
       Mode m = n.loadMode(pickMode());
-      System.out.println(m);
+      System.out.println("Mode Loaded: \n" + m);
+      n.loadedModes.put(Network.generateNextID(), m);
+      //Print expanded traits.
+      System.out.println("Printing Expanded Traits:");
+      for (Map.Entry<String, TraitType> entry : m.traits.entrySet()) {
+         String name = entry.getKey();
+         TraitType t = entry.getValue();
+         System.out.println(name + ":\n\tType: " + t.type + "\n\tVariations: " + t.var.toString());
+      }
+      //Print expanded rules.
+      System.out.println("Printing Expanded Rules:");
+      for (Rule r : m.rules.values()) {
+         System.out.println("\t" + r.toString());
+      }
+      //Initialize a new gamestate from Mode m.
+      Gamestate gamestate = new Gamestate(m, generateNextID());
+      n.runningGamestates.put(gamestate.id, gamestate);
+      gamestate.startup();
    }
 
    public Network() {
-      loadedModes = new HashMap<String, Mode>();
-      runningGamestates = new HashMap<String, Gamestate>();
-      lastGeneratedID = "";
+      loadedModes = new HashMap<ID, Mode>();
+      runningGamestates = new HashMap<ID, Gamestate>();
+      lastGeneratedID = new ID("");
    }
 
    public static File pickMode() {
@@ -48,7 +63,7 @@ public class Network {
    /**
     * Loads the mode specified.
     */
-   public Mode loadMode(File f) throws InvalidPathException, IOException, ParseException {
+   public Mode loadMode(File f) throws InvalidPathException {
       Reader reader;
       try {
          reader = new FileReader(f);
@@ -56,20 +71,8 @@ public class Network {
          System.out.println("File not found when loading mode...");
          return null;
       }
-//    Reading in the Json file
-      Interpreter i = new Interpreter();
-      Parser p = new Parser();
-      JSONObject jo = (JSONObject)new JSONParser().parse(reader);
-      String modeName = (String)jo.get("modeName");
-      int numPlayers = Integer.parseInt((String)jo.get("numPlayers"));
-      HashMap<String,Trait> traits = i.interpretTraits((HashMap)jo.get("traits"));
-      HashMap<String,Slot> slots = i.interpretSlots((HashMap)jo.get("slots"));
-      ArrayList<Card> cards = i.interpretCards((HashMap)jo.get("cards"));
-
-
-
-
-      return new Mode()
+      Mode m = new Gson().fromJson(reader, Mode.class);
+      return m;
    }
 
    /**
@@ -77,18 +80,22 @@ public class Network {
     * such that there are never any duplicated IDs.
     * @return Unique String ID.
     */
-   public static String generateNextID() {
+   public static ID generateNextID() {
       lastGeneratedID = generateNextID(lastGeneratedID);
       return lastGeneratedID;
    }
 
-   private static String generateNextID(String lastID) {
-      if (lastID.equals("")) return "0";
-      if (lastID.charAt(lastID.length() - 1) == 'o') {
-         return generateNextID(lastID.substring(0, lastID.length() - 1)) + "0";
+   private static ID generateNextID(ID lastID) {
+      if (lastID.id.equals("")) return new ID("0");
+      if (lastID.id.charAt(lastID.id.length() - 1) == 'o') {
+         return new ID(generateNextID(new ID(lastID.id.substring(0, lastID.id.length() - 1))).id + "0");
       } else {
-         return lastID.substring(0, lastID.length() - 1) + (char) ((int) lastID.charAt(lastID.length() - 1) + 1);
+         return new ID(lastID.id.substring(0, lastID.id.length() - 1) + (char) ((int) lastID.id.charAt(lastID.id.length() - 1) + 1));
       }
+   }
+
+   public static ID getLastID() {
+      return lastGeneratedID;
    }
 
    public Gamestate startGamestate(Mode m) {
