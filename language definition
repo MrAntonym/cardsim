@@ -1,0 +1,18 @@
+program -> rule rule*
+rule -> condition --> command ;
+command -> update update-or-action
+update-or-action -> update | action
+update -> mem [ expr ] := expr
+action -> wait | forward | backward | left | right
+| eat | attack | grow | bud | mate
+| tag [ expr ] | serve [ expr ]
+condition -> con|unction ( or con|unction )*
+con|unction -> relation ( and relation )*
+relation -> expr rel expr | { condition }
+rel -> < | <= | = | >= | > | !=
+expr -> term ( addop term )*
+term -> factor ( mulop factor )*
+factor -> <number> | player.<element> | universal.<element> |mem [ expr ] | ( expr ) | - factor | sensor
+element -> nearby [ expr ] | ahead [ expr ] | random [ expr ] | smell
+addop -> + | -
+mulop -> * | / | mod
