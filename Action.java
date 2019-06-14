@@ -1,3 +1,4 @@
+package com.company;
 import java.util.HashMap;
 
 /**
@@ -5,8 +6,6 @@ import java.util.HashMap;
  * Formally speaking, an action takes a gamestate as an input and returns a gamestate as an output
  */
 public class Action {
-
-    //would it be better to make this an abstract class? Or just to simply expand out on the list of actions?
 
     /**
      * Create a new uniquely identified Slot.
@@ -37,7 +36,7 @@ public class Action {
     public static Card createCard(String title, Mode m){
         try {
             Card c = (Card) m.cards.get(title).clone();
-            c.ID = Network.generateNextID();
+            c.id = Network.generateNextID();
             c.s = new Cardstate(true, Orientation.UP);
             return c;
         } catch (CloneNotSupportedException e) {
@@ -73,7 +72,5 @@ public class Action {
     public static void endTurn(Gamestate g){
         g.playerPriority++;
     }
-
-
 
 }

@@ -1,4 +1,4 @@
-
+package com.company;
 /**
  * Stores the physical position of a particular card.
  */
