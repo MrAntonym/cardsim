@@ -1,18 +1,18 @@
 program -> rule rule*
 rule -> condition --> command ;
-command -> update update-or-action
+command -> update* update-or-action
 update-or-action -> update | action
-update -> mem [ expr ] := expr
-action -> wait | forward | backward | left | right
-| eat | attack | grow | bud | mate
-| tag [ expr ] | serve [ expr ]
-condition -> con|unction ( or con|unction )*
-con|unction -> relation ( and relation )*
+update -> field := (function | field)
+action -> <action> | <function>(<param>)
+function(param) -> rule
+param ->  (int | boolean | string | player | card | slot)*
+condition -> conjunction ( or conjunction )*
+conjunction -> relation ( and relation )*
 relation -> expr rel expr | { condition }
 rel -> < | <= | = | >= | > | !=
 expr -> term ( addop term )*
 term -> factor ( mulop factor )*
-factor -> <number> | player.<element> | universal.<element> |mem [ expr ] | ( expr ) | - factor | sensor
-element -> nearby [ expr ] | ahead [ expr ] | random [ expr ] | smell
+factor -> <int> |  ( expr ) | - factor | random [ expr ]
+field ->  <player>.<card | slot> | <card>.<|> | <slot>.<card | >                //need to finish
 addop -> + | -
 mulop -> * | / | mod
