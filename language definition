@@ -4,7 +4,7 @@ command -> update* update-or-action
 update-or-action -> update | action
 update -> field := (function | field)
 action -> <action> | <function>(<param>)
-function(param) -> rule
+function(param) -> let <string>(param) =
 param ->  (int | boolean | string | player | card | slot)*
 condition -> conjunction ( or conjunction )*
 conjunction -> relation ( and relation )*
