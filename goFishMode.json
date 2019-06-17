@@ -1,60 +1,73 @@
 {
-	"modeName": "Go Fish",
-    "numPlayers": "2",
-    "traits": {
-        "suit": {
-            "type": "enum",
-            "var": ["spade", "diamond", "club","heart"]
-        },
-        "number": {
-            "type": "int",
-            "var": [1,2,3,4,5,6,7,8,9,10,11,12,13]
-        }
+  "modeName": "Go Fish",
+  "playerTypes": {
+    "player" : 2
+  },
+  "traits": {
+    "suit": {
+      "type": "java.lang.String",
+      "var": ["spade", "diamond", "club","heart"]
     },
-    "slots": ["deck", "p1hand", "p2hand", "center"],
-    "rules": {
-        "draw(slot)": {
-            "title": "draw",
-            "condition": [],
-            "operation": ["moveCard", "deck", "0", "slot", "0"]
-        },
-        "turnHand": {
-            "title": "turnHand",
-            "condition": [],
-            "operation": ["goto", "product", "5", "getPlayerNumber", "getTurn", "return", "p1hand", "pass", "pass", "pass", "return", "p2hand"]
-        }
-    },
-    "cards": {
-        "aceSpade": {
-            "title": "aceSpade",
-            "rules": ["checkPair"],
-            "artID": "AS.png",
-            "traits": ["suit spade", "number 1"]
-        },
-        "aceDiamond": {
-            "title": "aceDiamond",
-            "rules": ["checkPair"],
-            "artID": "AD.png",
-            "traits": ["ace", "diamond"]
-        },
-        "aceClub": {
-            "title": "aceClub",
-            "rules": ["checkPair"],
-            "artID": "AC.png",
-            "traits": ["ace", "club"]
-        },
-        "aceHeart": {
-            "title": "aceHeart",
-            "rules": ["checkPair"],
-            "artID": "AH.png",
-            "traits": ["ace", "heart"]
-        },
-        "twoSpade": {
-            "title": "twoSpade",
-            "rules": ["checkPair"],
-            "artID": "2S.png",
-            "traits": ["two", "spade"]
-        }
+    "number": {
+      "type": "java.lang.Integer",
+      "var": [1,2,3,4,5,6,7,8,9,10,11,12,13]
     }
+  },
+  "slots": {
+    "universal": ["deck", "center"],
+    "player": ["hand", "pairs"]
+  },
+  "rules": {
+    "startup": {
+      "title": "startup",
+      "inputs": 0,
+      "condition": [],
+      "operation": ["hand", "pop", "pairs", "pop"]
+    },
+    "draw": {
+      "title": "draw",
+      "inputs": 1,
+      "condition": [],
+      "operation": ["moveCard", "deck", "0", "slot", "0"]
+    },
+    "turnHand": {
+      "title": "turnHand",
+      "inputs": 0,
+      "condition": [],
+      "operation": ["goto", "product", "5", "getPlayerNumber", "getTurn", "return", "p1hand", "pass", "pass", "pass", "return", "p2hand"]
+    }
+  },
+  "cards": {
+    "aceSpade": {
+      "title": "aceSpade",
+      "rules": ["checkPair"],
+      "artID": "AS.png",
+      "traits": ["suit spade", "number 1"]
+    },
+    "aceDiamond": {
+      "title": "aceDiamond",
+      "rules": ["checkPair"],
+      "artID": "AD.png",
+      "traits": ["ace", "diamond"]
+    },
+    "aceClub": {
+      "title": "aceClub",
+      "rules": ["checkPair"],
+      "artID": "AC.png",
+      "traits": ["ace", "club"]
+    },
+    "aceHeart": {
+      "title": "aceHeart",
+      "rules": ["checkPair"],
+      "artID": "AH.png",
+      "traits": ["ace", "heart"]
+    },
+    "twoSpade": {
+      "title": "twoSpade",
+      "rules": ["checkPair"],
+      "artID": "2S.png",
+      "traits": ["two", "spade"]
+    }
+  }
 
 }
