@@ -177,7 +177,11 @@ public class Tokenizer implements Iterator<Token> {
          lexDash();
          break;
       case ':':
-         consume('=', TokenType.ASSIGN);
+         if (in.peek()=='='){
+            consume('=', TokenType.ASSIGN);
+         }else{
+            addToken(TokenType.COLON);
+         }
          break;
       case '!':
          consume('=', TokenType.NE);

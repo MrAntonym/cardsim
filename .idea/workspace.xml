@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d20590a7-9ad4-415c-b4ac-d246b13507b2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/language definition" beforeDir="false" afterPath="$PROJECT_DIR$/language definition" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/TokenCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/language/src/TokenCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/language/src/TokenType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/src/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/language/src/Tokenizer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,15 +46,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Cardstate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Card.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -71,32 +64,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Gamestate.java">
+        <entry file="file://$PROJECT_DIR$/goFishMode.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-              <folding>
-                <element signature="e#407#408#0" expanded="true" />
-                <element signature="e#491#492#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="425">
+              <caret line="25" column="6" lean-forward="true" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/language definition">
+        <entry file="file://$PROJECT_DIR$/language/src/Tokenizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="96" lean-forward="true" selection-start-line="15" selection-start-column="96" selection-end-line="15" selection-end-column="96" />
+            <state relative-caret-position="2312">
+              <caret line="183" column="10" selection-start-line="183" selection-start-column="10" selection-end-line="183" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/language/src/Interpreter.java">
+        <entry file="file://$PROJECT_DIR$/language/src/TokenType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            <state relative-caret-position="544">
+              <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/language/src/TokenCategory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gamestate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+              <folding>
+                <element signature="e#491#492#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -115,6 +125,9 @@
       <find>State</find>
       <find>Zone</find>
       <find>j</find>
+      <find>nearby</find>
+      <find>num</find>
+      <find>addToken</find>
     </findStrings>
     <replaceStrings>
       <replace>Cardstate</replace>
@@ -139,12 +152,15 @@
         <option value="$PROJECT_DIR$/Cardstate.java" />
         <option value="$PROJECT_DIR$/Gamestate.java" />
         <option value="$PROJECT_DIR$/Trait.java" />
-        <option value="$PROJECT_DIR$/goFishMode.json" />
         <option value="$PROJECT_DIR$/Mode.java" />
         <option value="$PROJECT_DIR$/Network.java" />
         <option value="$PROJECT_DIR$/language/src/Parser.java" />
         <option value="$PROJECT_DIR$/language/src/Token.java" />
         <option value="$PROJECT_DIR$/language definition" />
+        <option value="$PROJECT_DIR$/goFishMode.json" />
+        <option value="$PROJECT_DIR$/language/src/TokenCategory.java" />
+        <option value="$PROJECT_DIR$/language/src/TokenType.java" />
+        <option value="$PROJECT_DIR$/language/src/Tokenizer.java" />
       </list>
     </option>
   </component>
@@ -186,7 +202,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560763069669" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560768929046" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../json-simple-1.1.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -230,7 +246,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22292000" />
+    <option name="totallyTimeSpent" value="23645000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -360,7 +376,6 @@
         <state relative-caret-position="204">
           <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
           <folding>
-            <element signature="e#407#408#0" expanded="true" />
             <element signature="e#491#492#0" expanded="true" />
           </folding>
         </state>
@@ -435,7 +450,7 @@
     <entry file="file://$PROJECT_DIR$/goFishMode.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <caret line="25" column="6" lean-forward="true" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -458,15 +473,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/language/src/TokenType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        <state relative-caret-position="544">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/language/src/TokenCategory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/language/src/Tokenizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
+        <state relative-caret-position="2312">
+          <caret line="183" column="10" selection-start-line="183" selection-start-column="10" selection-end-line="183" selection-end-column="10" />
         </state>
       </provider>
     </entry>
